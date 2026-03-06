@@ -1,1 +1,14 @@
+name: flask-project
+namespace: flask
+
 replicaCount: 1
+
+image:
+  repository: sandymaraf/flask-project
+  tag: latest
+
+service:
+  port: 80
+  targetPort: 8080
+
+configmap: flask-config
