@@ -14,7 +14,7 @@ spec:
     path: helm/flask-chart
     helm:
       valueFiles:
-        - ../../gitops/environments/dev/values.yaml
+        - ../../gitops/environments/dev/values-dev.yaml
 
   destination:
     server: https://kubernetes.default.svc
