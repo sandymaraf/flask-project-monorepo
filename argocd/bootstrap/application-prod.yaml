@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: flask-prod
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/sandymaraf/flask-project-monorepo
+    targetRevision: main
+    path: helm/flask-chart
+    helm:
+      valueFiles:
+        - ../../gitops/environments/prod/values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: flask
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
