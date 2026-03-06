@@ -26,8 +26,8 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./app/flask-app
+          file: ./app/flask-app/Dockerfile
           push: true
           tags: |
-            sandymaraf/flask-project:${{ steps.vars.outputs.SHORT_SHA }}
-            sandymaraf/flask-project:latest
+            sandymaraf/flask-project:${{ github.sha }}
